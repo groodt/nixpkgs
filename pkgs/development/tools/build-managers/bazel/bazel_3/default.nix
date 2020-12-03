@@ -164,6 +164,9 @@ stdenv.mkDerivation rec {
     description = "Build tool that builds code quickly and reliably";
     license = licenses.asl20;
     maintainers = [ maintainers.mboes ];
+    # fails on darwin with ld: Assertion failed: (targetAtom != NULL),
+    # remove once https://github.com/NixOS/nixpkgs/issues/105573 is resolved
+    broken = stdenv.isDarwin;
     inherit platforms;
   };
 
